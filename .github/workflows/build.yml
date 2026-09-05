@@ -19,24 +19,18 @@ jobs:
       - name: Install System Dependencies
         run: |
           sudo apt update
-          sudo apt install -y git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libssl-dev libffi-dev libsqlite3-dev lld wget
+          sudo apt install -y git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libssl-dev libffi-dev libsqlite3-dev lld
           pip install --upgrade pip
           pip install buildozer cython
 
-      - name: Install Android Command Line Tools & Accept Licenses
+      - name: Link GitHub's Built-in Android SDK & Accept Licenses
         run: |
-          # 1. Setup SDK structure
-          SDK_DIR="$HOME/.buildozer/android/platform/android-sdk"
-          mkdir -p "$SDK_DIR/cmdline-tools"
-          
-          # 2. Download and place official Android command line tools
-          wget -q https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O cmdline-tools.zip
-          unzip -q cmdline-tools.zip -d "$SDK_DIR/cmdline-tools"
-          mv "$SDK_DIR/cmdline-tools/cmdline-tools" "$SDK_DIR/cmdline-tools/latest"
-          rm cmdline-tools.zip
+          # 1. Point Buildozer directly to GitHub's pre-installed Android SDK
+          mkdir -p ~/.buildozer/android/platform/
+          ln -s $ANDROID_HOME ~/.buildozer/android/platform/android-sdk
 
-          # 3. Accept all licenses automatically using sdkmanager
-          yes | "$SDK_DIR/cmdline-tools/latest/bin/sdkmanager" --licenses --sdk_root="$SDK_DIR" || true
+          # 2. Accept all licenses using the runner's pre-installed sdkmanager
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
       - name: Build APK with Buildozer
         run: |

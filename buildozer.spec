@@ -3,10 +3,10 @@
 # (str) Title of your application
 title = Kilobyte AI
 
-# (str) Package name (no spaces or special characters)
+# (str) Package name
 package.name = kilobyte
 
-# (str) Package domain (needed for Android package naming: org.kilobyte.kilobyte)
+# (str) Package domain
 package.domain = org.kilobyte
 
 # (str) Source code directory
@@ -30,10 +30,10 @@ android.api = 33
 # (int) Minimum Android API supported
 android.minapi = 21
 
-# (str) Pin build-tools version to avoid unaccepted v37 license prompt
+# (str) Build tools version
 android.build_tools_version = 33.0.2
 
-# (str) Android NDK version pinned for stability
+# (str) Android NDK version
 android.ndk = 25b
 
 # (bool) Auto-accept SDK license agreements
@@ -41,11 +41,6 @@ android.accept_sdk_licenses = True
 
 # (str) Supported CPU Architectures
 android.archs = arm64-v8a
-android.api = 33
-android.minapi = 21
-android.ndk = 25b
-android.build_tools_version = 33.0.2
-android.accept_sdk_licenses = True
 
 # (str) Screen orientation
 orientation = portrait

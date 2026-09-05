@@ -9,35 +9,37 @@ package.name = kilobyte
 # (str) Package domain (needed for Android package naming: org.kilobyte.kilobyte)
 package.domain = org.kilobyte
 
-# (str) Source code where the main.py or app.py lives
+# (str) Source code directory
 source.dir = .
 
-# (list) Source files to include (crucial for loading your HTML/CSS/JS frontend)
+# (list) Source files to include
 source.include_exts = py,png,jpg,html,css,js,json,txt
 
 # (list) Application requirements
-# Keep C-dependencies out to prevent compilation crashes in p4a
 requirements = python3,flask,flask-cors,requests,urllib3,certifi
 
 # (str) Application version
 version = 1.0
 
-# (list) Permissions needed for local networking and web calls
+# (list) Permissions needed
 android.permissions = INTERNET, ACCESS_NETWORK_STATE
 
-# (int) Target Android API (33 = Android 13)
+# (int) Target Android API
 android.api = 33
 
-# (int) Minimum Android API supported (21 = Android 5.0)
+# (int) Minimum Android API supported
 android.minapi = 21
 
-# (str) Android NDK version pinned for build stability
+# (str) Pin build-tools version to avoid unaccepted v37 license prompt
+android.build_tools_version = 33.0.2
+
+# (str) Android NDK version pinned for stability
 android.ndk = 25b
 
-# (bool) Auto-accept SDK license agreements during build
+# (bool) Auto-accept SDK license agreements
 android.accept_sdk_licenses = True
 
-# (str) Supported CPU Architectures (arm64-v8a covers almost all modern Android phones)
+# (str) Supported CPU Architectures
 android.archs = arm64-v8a
 
 # (str) Screen orientation
